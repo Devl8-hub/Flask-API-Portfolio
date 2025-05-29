@@ -1,0 +1,43 @@
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return jsonify({
+        "message": "Welcome to my Flask Portfolio API"
+    })
+
+@app.route("/about")
+def about():
+    return jsonify({
+        "name": "Your Name",
+        "profession": "Aspiring Data Engineer / Web Developer",
+        "skills": ["Python", "Flask", "SQL", "Docker", "AWS"]
+    })
+
+@app.route("/projects")
+def projects():
+    return jsonify([
+        {
+            "title": "Machine Learning Model API",
+            "description": "An API that predicts housing prices.",
+            "link": "https://github.com/yourusername/ml-api"
+        },
+        {
+            "title": "Portfolio Website",
+            "description": "Personal portfolio site built with Flask and deployed on Render.",
+            "link": "https://your-portfolio.onrender.com"
+        }
+    ])
+
+@app.route("/contact")
+def contact():
+    return jsonify({
+        "email": "your.email@example.com",
+        "linkedin": "https://linkedin.com/in/yourprofile",
+        "github": "https://github.com/yourusername"
+    })
+
+if __name__ == "__main__":
+    app.run(debug=True)
